@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package calculadora;
+
+option java_multiple_files = true;
+
+// Definição do serviço CalculadoraService
+service CalculadoraService {
+  // Método Unary para somar dois números
+  rpc Soma (SomaRequest) returns (SomaResponse){};
+}
+
+// Mensagem de requisição contendo dois números inteiros
+message SomaRequest {
+  int32 numero1 = 1;
+  int32 numero2 = 2;
+}
+
+// Mensagem de resposta contendo o resultado da soma
+message SomaResponse {
+  int64 resultado = 1;
+}
