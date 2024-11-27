@@ -3,6 +3,7 @@ package tech.aartedeprogramar.server;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import tech.aartedeprogramar.services.CalculadoraServiceImpl;
+import tech.aartedeprogramar.services.GeradorNumerosServiceImpl;
 
 public class CalculadoraServer {
 
@@ -10,6 +11,7 @@ public class CalculadoraServer {
         // Criando o servidor gRPC na porta 50051
         Server server = ServerBuilder.forPort(50051)
                 .addService(new CalculadoraServiceImpl())
+                .addService(new GeradorNumerosServiceImpl())
                 .build();
         // Adicionando o Shutdown Hook para encerramento controlado
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

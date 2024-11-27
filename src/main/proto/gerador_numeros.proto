@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package gerador;
+
+option java_multiple_files = true;
+option java_package = "com.gerador.grpc";
+option java_outer_classname = "GeradorNumerosProto";
+
+// Mensagem de solicitação contendo o intervalo numérico
+message IntervaloRequest {
+  int32 inicio = 1; // Número inicial do intervalo
+  int32 fim = 2;    // Número final do intervalo
+}
+
+// Mensagem de resposta contendo um número ímpar
+message NumeroImparResponse {
+  int32 numero = 1; // Número ímpar retornado
+}
+
+service GeradorNumeros {
+  // Método para retornar números impares dentro de um intervalo
+  rpc GerarImpares (IntervaloRequest) returns (stream NumeroImparResponse);
+}
